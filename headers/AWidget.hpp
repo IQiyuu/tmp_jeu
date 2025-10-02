@@ -1,28 +1,29 @@
 #ifndef AWIDGET_HPP
 #define AWIDGET_HPP
 
-#include <functional>
 #include "IWidget.hpp"
+#include "Text.hpp"
 #include <SDL2/SDL.h>
 
-class AWidget: public IWidget {
+class AWidget : public IWidget {
     protected:
         int _x;
         int _y;
         int _width;
         int _height;
         bool _active;
-        std::string _text;
+        Text _text;
 
     public:
         AWidget(void);
         AWidget(
-            int x = 0,
-            int y = 0,
+            int x,
+            int y,
             int width = 100,
             int height = 100,
             bool active = true,
-            std::string _text = ""
+            const std::string& text = "",
+            SDL_Renderer* renderer = nullptr
         );
         virtual ~AWidget(void);
 
@@ -34,17 +35,18 @@ class AWidget: public IWidget {
         int getHeight(void) const;
         bool isActive(void) const;
         bool isInactive(void) const;
-        std::function<void()> getAction() const;
-        std::string getText(void) const;
+
+        Text& getText(void);
+        const Text& getText(void) const;
 
         void setX(int);
         void setY(int);
         void setWidth(int);
         void setHeight(int);
-        void setActive();
-        void setInactive();
+        void setActive(void);
+        void setInactive(void);
         void toggleActive(void);
-        void setAction(const std::function<void()> &);
+        void setText(const std::string& content, SDL_Renderer* renderer);
 };
 
 #endif

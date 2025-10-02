@@ -2,7 +2,6 @@
 #define BUTTON_HPP
 
 #include "AClickableWidget.hpp"
-#include <SDL2/SDL.h>
 
 class Button : public AClickableWidget {
     public:

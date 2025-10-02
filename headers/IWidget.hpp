@@ -2,7 +2,7 @@
 #define IWIDGET_HPP
 
 #include "Coord.hpp"
-#include <SDL2/SDL.h>
+#include "Text.hpp"
 
 class IWidget {
     protected:
@@ -11,10 +11,11 @@ class IWidget {
         int _height;
         int _width;
         bool _active;
-        std::string _text;
+        Text _text;
 
     public:
-        IWidget(void) : _x(0), _y(0), _height(100), _width(100), _active(true), _text("") {}
+        IWidget()
+            : _x(0), _y(0), _height(100), _width(100), _active(true), _text(0, 0, "", nullptr) {}
         virtual ~IWidget(void) = default;
 
         virtual void render(SDL_Renderer* renderer) const = 0;
@@ -24,7 +25,8 @@ class IWidget {
         int getHeight(void) const { return _height; }
         int getWidth(void) const { return _width; }
         bool isActive(void) const { return _active; }
-        std::string getString(void) const { return _text; }
+        Text& getText(void) { return _text; }
+        const Text& getText(void) const { return _text; }
 
         void setX(int x) { _x = x; }
         void setY(int y) { _y = y; }
@@ -33,6 +35,7 @@ class IWidget {
         void toggleActive(void) { _active = !_active; }
         void setActive(void) { _active = true; }
         void setInactive(void) { _active = false; }
+        void setText(const Text& text) { _text = text; }
 };
 
 #endif
