@@ -1,5 +1,5 @@
+#include "Menu.hpp"
 #include "Button.hpp"
-#include <vector>
 
 const int WIDTH = 1024;
 const int HEIGHT = 800;
@@ -33,19 +33,22 @@ int main(int ac, char* av[]) {
         return 1;
     }
 
-    Button button = Button(500,500);
-    std::vector<Button> buttons;
+    Button *button = new Button(500,500);
+    std::vector<AClickableWidget *> buttons;
 
     buttons.push_back(button);
+
+    Menu menu = Menu(buttons);
 
     bool running = true;
     SDL_Event event;
     while (running) {
         SDL_SetRenderDrawColor(canvas, 0, 0, 0, 255);
         SDL_RenderClear(canvas);
-        for (auto &btn : buttons) {
-            if (btn.isActive())
-                btn.render(canvas);
+        std::vector<AClickableWidget *> actives = menu.getActiveWidgets();
+        for (auto &btn : actives) {
+            if (btn->isActive())
+                btn->render(canvas);
             SDL_RenderPresent(canvas);
         }
         while (SDL_PollEvent(&event)) {
@@ -54,12 +57,8 @@ int main(int ac, char* av[]) {
             if (event.type == SDL_MOUSEBUTTONDOWN) {
                 int x = event.button.x;
                 int y = event.button.y;
-                for (auto &btn : buttons) {
-                    if (btn.isActive() &&
-                        x >= btn.getCoord().getX() &&
-                        x <= btn.getCoord().getX() + btn.getWidth() &&
-                        y >= btn.getCoord().getY() &&
-                        y <= btn.getCoord().getY() + btn.getHeight()) {
+                for (auto &btn : actives) {
+                    if (btn->isIn(x, y)) {
                             std::cout << "btn cliqued" << std::endl;
                     }
                 }

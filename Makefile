@@ -2,6 +2,8 @@ NAME = game
 
 F =	main\
 	UI/AWidget\
+	UI/AClickableWidget\
+	UI/Menu\
 	UI/Button\
 	utils/Coord
 

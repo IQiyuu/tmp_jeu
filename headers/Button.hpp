@@ -1,26 +1,18 @@
 #ifndef BUTTON_HPP
 #define BUTTON_HPP
 
-#include "AWidget.hpp"
+#include "AClickableWidget.hpp"
 #include <SDL2/SDL.h>
 
-class Button : public AWidget {
-private:
-    void (*_action)(void);
+class Button : public AClickableWidget {
+    public:
+        Button(int x = 0, int y = 0, int width = 100, int height = 100, const std::function<void()>& action = nullptr);
+        Button(const Button& other);
+        ~Button(void);
 
-public:
-    Button();
-    Button(const Coord &coord, void (*action)(void) = nullptr, int width = 100, int height = 100);
-    Button(int x, int y, void (*action)(void) = nullptr, int width = 100, int height = 100);
-    Button(const Button &);
-    ~Button();
+        Button& operator=(const Button& other);
 
-    Button& operator=(const Button &);
-
-    void setAction(void (*a)(void));
-    void (*getAction() const)(void);
-
-    void render(SDL_Renderer *canvas) const override;
+        void render(SDL_Renderer* renderer) const;
 };
 
 #endif
