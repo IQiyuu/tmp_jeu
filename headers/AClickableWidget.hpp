@@ -10,7 +10,8 @@ class AClickableWidget : public AWidget {
 
     public:
         AClickableWidget(
-            const Coord& coord = Coord(),
+            int x = 0,
+            int y = 0,
             int width = 100,
             int height = 100,
             bool active = true,

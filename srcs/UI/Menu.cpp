@@ -14,6 +14,15 @@ Menu &Menu::operator=(const Menu &m) {
 }
 
 std::vector<Panel *> Menu::getPanels(void) const { return this->_panels; }
-void                 Menu::addPanels(Panel * p) {
+Panel               *Menu::getActivePanel(void) const {
+    for (auto &p : this->_panels)
+        if (p->isActive())
+            return p;
+    return nullptr;
+}
+void                 Menu::addPanel(Panel * p) { this->_panels.push_back(p); }
+
+void                 Menu::createPanel(void) {
+    Panel *p = new Panel();
     this->_panels.push_back(p);
 }

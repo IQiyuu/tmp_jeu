@@ -1,4 +1,4 @@
-#include "Panel.hpp"
+#include "Menu.hpp"
 #include "Button.hpp"
 
 const int WIDTH = 1024;
@@ -7,6 +7,7 @@ const int HEIGHT = 800;
 int main(int ac, char* av[]) {
     (void)ac;
     (void)av;
+
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "Erreur d'initialisation SDL: " << SDL_GetError() << std::endl;
         return 1;
@@ -25,47 +26,58 @@ int main(int ac, char* av[]) {
         return 1;
     }
 
-    SDL_Renderer* canvas = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (!canvas) {
-        std::cout << "Erreur SDL_CreateRenderer: " << SDL_GetError() << std::endl;
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    if (!renderer) {
+        std::cerr << "Erreur SDL_CreateRenderer: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
         SDL_Quit();
         return 1;
     }
 
-    Button *button = new Button(500,500);
-    std::vector<AClickableWidget *> buttons;
+    Menu menu;
+    Panel *p = new Panel();
+    
+    menu.addPanel(p);
 
-    buttons.push_back(button);
+    Button *btn = new Button();
 
-    Panel menu = Panel(buttons);
+    p->addWidget(btn);
 
     bool running = true;
     SDL_Event event;
     while (running) {
-        SDL_SetRenderDrawColor(canvas, 0, 0, 0, 255);
-        SDL_RenderClear(canvas);
-        std::vector<AClickableWidget *> actives = menu.getActiveWidgets();
-        for (auto &btn : actives) {
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderClear(renderer);
+
+        Panel& panel = menu.getActivePanel();
+        std::vector<AClickableWidget*> btns = panel.getActiveWidgets();
+
+        for (auto& btn : btns) {
             if (btn->isActive())
-                btn->render(canvas);
-            SDL_RenderPresent(canvas);
+                btn->render(renderer);
         }
+
+        SDL_RenderPresent(renderer);
+
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT)
                 running = false;
+
             if (event.type == SDL_MOUSEBUTTONDOWN) {
                 int x = event.button.x;
                 int y = event.button.y;
-                for (auto &btn : actives) {
+
+                for (auto& btn : btns) {
                     if (btn->isIn(x, y)) {
-                            std::cout << "btn cliqued" << std::endl;
+                        std::cout << "btn clicked" << std::endl;
+                        // btn->execute();
                     }
                 }
             }
         }
     }
-    SDL_DestroyRenderer(canvas);
+
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
     return 0;

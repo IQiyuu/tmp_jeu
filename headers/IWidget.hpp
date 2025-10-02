@@ -6,25 +6,28 @@
 
 class IWidget {
     protected:
-        Coord _coord;
+        int _x;
+        int _y;
         int _height;
         int _width;
         bool _active;
         std::string _text;
 
     public:
-        IWidget(void) : _coord(0,0), _height(100), _width(100), _active(true), _text("") {}
+        IWidget(void) : _x(0), _y(0), _height(100), _width(100), _active(true), _text("") {}
         virtual ~IWidget(void) = default;
 
         virtual void render(SDL_Renderer* renderer) const = 0;
 
-        Coord getCoord(void) const { return _coord; }
+        int getX(void) const { return _x; }
+        int getY(void) const { return _y; }
         int getHeight(void) const { return _height; }
         int getWidth(void) const { return _width; }
         bool isActive(void) const { return _active; }
         std::string getString(void) const { return _text; }
 
-        void setCoord(const Coord& c) { _coord = c; }
+        void setX(int x) { _x = x; }
+        void setY(int y) { _y = y; }
         void setHeight(int h) { _height = h; }
         void setWidth(int w) { _width = w; }
         void toggleActive(void) { _active = !_active; }

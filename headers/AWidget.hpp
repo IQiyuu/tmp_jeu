@@ -6,7 +6,8 @@
 
 class AWidget: public IWidget {
     protected:
-        Coord _coord;
+        int _x;
+        int _y;
         int _width;
         int _height;
         bool _active;
@@ -15,7 +16,8 @@ class AWidget: public IWidget {
     public:
         AWidget(void);
         AWidget(
-            const Coord &coord,
+            int x = 0,
+            int y = 0,
             int width = 100,
             int height = 100,
             bool active = true,
@@ -25,7 +27,8 @@ class AWidget: public IWidget {
 
         virtual void render(SDL_Renderer* renderer) const = 0;
 
-        Coord getCoord(void) const;
+        int getX(void) const;
+        int getY(void) const;
         int getWidth(void) const;
         int getHeight(void) const;
         bool isActive(void) const;
@@ -33,9 +36,10 @@ class AWidget: public IWidget {
         void (*getAction(void) const)(void) const;
         std::string getText(void) const;
 
-        void setCoord(const Coord &c);
-        void setWidth(int w);
-        void setHeight(int h);
+        void setX(int);
+        void setY(int);
+        void setWidth(int);
+        void setHeight(int);
         void setActive();
         void setInactive();
         void toggleActive(void);

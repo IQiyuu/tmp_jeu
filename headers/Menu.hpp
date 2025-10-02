@@ -16,7 +16,9 @@ class Menu {
         Menu &operator=(const Menu &);
 
         std::vector<Panel *> getPanels(void) const;
-        void                 addPanels(Panel *);
+        Panel               *getActivePanel(void) const;
+        void                 addPanel(Panel *);
+        void                 createPanel(void);
 };
 
 #endif

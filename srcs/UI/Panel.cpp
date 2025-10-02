@@ -46,3 +46,8 @@ void        Panel::disableAll(void) {
     for (auto &p : this->_widgets)
         p->setInactive();
 }
+
+bool    Panel::isActive(void) const { return this->_active; }
+
+void    Panel::disable(void) { this->_active = false; }
+void    Panel::enable(void) { this->_active = true; }

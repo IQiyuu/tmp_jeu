@@ -22,7 +22,10 @@ class Panel {
         std::vector<AClickableWidget *>  getWidgets(void) const;
         std::vector<AClickableWidget *>  getActiveWidgets(void) const;
         std::vector<AClickableWidget *>  getInactiveWidgets(void) const;
+        bool                             isActive(void) const;
 
+        void                             disable(void);
+        void                             enable(void);
         void                             setName(std::string);
 
         void                    addWidget(AClickableWidget *);

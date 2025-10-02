@@ -1,7 +1,7 @@
 #include "Button.hpp"
 
 Button::Button(int x, int y, int width, int height, const std::function<void()>& action, std::string text)
-    : AClickableWidget(Coord(x,y), width, height, true, text) {
+    : AClickableWidget(x, y, width, height, true, text) {
     setAction(action);
 }
 
@@ -22,7 +22,7 @@ Button& Button::operator=(const Button& other) {
 
 void Button::render(SDL_Renderer* renderer) const {
     if (!_active) return;
-    SDL_Rect rect = {_coord.getX(), _coord.getY(), _width, _height};
+    SDL_Rect rect = {_x, _y, _width, _height};
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     SDL_RenderFillRect(renderer, &rect);
 }

@@ -1,7 +1,7 @@
 #include "AClickableWidget.hpp"
 
-AClickableWidget::AClickableWidget(const Coord& coord, int width, int height, bool active, std::string text)
-    : AWidget(coord, width, height, active, text), _action(nullptr) {}
+AClickableWidget::AClickableWidget(int x, int y, int width, int height, bool active, std::string text)
+    : AWidget(x, y, width, height, active, text), _action(nullptr) {}
 
 AClickableWidget::~AClickableWidget(void) {}
 
