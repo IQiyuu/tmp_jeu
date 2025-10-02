@@ -13,7 +13,7 @@ F =	main\
 S = $(foreach f, $(F), srcs/$(f).cpp)
 OBJ = $(S:.cpp=.o)
 
-GFLAGS = -Wall -Werror -Wextra -Iheaders -g `sdl2-config --cflags --libs` -lSDL2_ttf
+GFLAGS = -Wall -Werror -Wextra -Iheaders -g `sdl2-config --cflags --libs` -lSDL2_ttf -fsanitize=address -g3 -O0 -fno-omit-frame-pointer
 
 all: $(NAME)
 r: re

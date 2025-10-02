@@ -3,8 +3,8 @@
 AWidget::AWidget(void)
     : _x(0), _y(0), _width(100), _height(100), _active(true), _text(0, 0, "") {}
 
-AWidget::AWidget(int x, int y, int width, int height, bool active, const std::string& text, SDL_Renderer* renderer)
-    : _x(x), _y(y), _width(width), _height(height), _active(active), _text(x, y, text, renderer) {}
+AWidget::AWidget(int x, int y, int width, int height, bool active, const std::string& text)
+    : _x(x), _y(y), _width(width), _height(height), _active(active), _text(x, y, text) {}
 
 AWidget::~AWidget(void) {}
 
@@ -26,6 +26,6 @@ void AWidget::toggleActive(void) { this->_active = !this->_active; }
 void AWidget::setActive(void) { this->_active = true; }
 void AWidget::setInactive(void) { this->_active = false; }
 
-void AWidget::setText(const std::string& content, SDL_Renderer* renderer) {
-    this->_text = Text(this->_x, this->_y, content, renderer);
+void AWidget::setText(const std::string& content) {
+    this->_text = Text(this->_x, this->_y, content);
 }

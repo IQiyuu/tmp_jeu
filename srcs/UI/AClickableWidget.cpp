@@ -18,8 +18,8 @@ void AClickableWidget::setAction(const std::function<void()>& action) {
     this->_action = action;
 }
 
-void AClickableWidget::setText(const std::string& content, SDL_Renderer* renderer) {
-    this->_text = Text(this->_x, this->_y, content, renderer);
+void AClickableWidget::setText(const std::string& content) {
+    this->_text = Text(this->_x, this->_y, content);
 }
 
 Text& AClickableWidget::getText(void) {

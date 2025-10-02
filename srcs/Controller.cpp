@@ -35,12 +35,17 @@ Controller::Controller(void) {
     SDL_SetRenderDrawColor(this->_renderer, 0, 0, 0, 255);
     SDL_RenderClear(this->_renderer);
 
-    // creation du main menu
     this->_main_menu = new Menu();
     Panel *p = new Panel();
-    Button *start_b = new Button(WIDTH/2 - 150/2, 50, 150, 50, [](){}, "Start");
-    Button *sett_b = new Button(WIDTH/2-150/2, 150, 150, 50, [](){}, "Settings");
-    Button *leave_b = new Button(WIDTH/2-150/2, 250, 150, 50, [](){}, "Leave");
+    Button* start_b = new Button(WIDTH/2 - 75, 50, 150, 50, [](){
+        std::cout << "starting the game" << std::endl;
+    }, "Start");
+    Button* sett_b   = new Button(WIDTH/2 - 75, 150, 150, 50, [](){
+        std::cout << "settings the game" << std::endl;
+    }, "Settings");
+    Button* leave_b  = new Button(WIDTH/2 - 75, 250, 150, 50, [](){
+        std::cout << "leave the game" << std::endl;
+    }, "Leave");
 
     std::vector<AClickableWidget *> btns = {start_b,sett_b,leave_b};
     p->addWidgets(btns);
@@ -58,3 +63,5 @@ Controller::~Controller(void) {
     SDL_DestroyWindow(this->_window);
     SDL_Quit();
 }
+
+Menu    *Controller::getMainMenu() const { return this->_main_menu; }

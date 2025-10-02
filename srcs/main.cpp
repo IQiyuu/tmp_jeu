@@ -41,8 +41,8 @@ int main(int ac, char* av[]) {
         // SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         // SDL_RenderClear(renderer);
 
-        // Panel *panel = menu.getActivePanel();
-        // std::vector<AClickableWidget*> btns = panel->getActiveWidgets();
+        Panel *panel = controller.getMainMenu()->getActivePanel();
+        std::vector<AClickableWidget*> btns = panel->getActiveWidgets();
 
         // for (auto& btn : btns) {
         //     if (btn->isActive())
@@ -55,17 +55,17 @@ int main(int ac, char* av[]) {
             if (event.type == SDL_QUIT)
                 running = false;
 
-            // if (event.type == SDL_MOUSEBUTTONDOWN) {
-            //     int x = event.button.x;
-            //     int y = event.button.y;
+            if (event.type == SDL_MOUSEBUTTONDOWN) {
+                int x = event.button.x;
+                int y = event.button.y;
 
-            //     for (auto& btn : btns) {
-            //         if (btn->isIn(x, y)) {
-            //             std::cout << "btn clicked" << std::endl;
-            //             // btn->execute();
-            //         }
-            //     }
-            // }
+                for (auto &btn : btns) {
+                    if (btn->isIn(x, y)) {
+                        std::cout << "btn clicked" << std::endl;
+                        btn->execute();
+                    }
+                }
+            }
         }
     }
 

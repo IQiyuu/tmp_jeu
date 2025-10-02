@@ -25,7 +25,7 @@ class AClickableWidget : public AWidget {
         virtual void execute(void);
 
         void setAction(const std::function<void()>& action);
-        void setText(const std::string& content, SDL_Renderer* renderer);
+        void setText(const std::string& content);
         Text& getText(void);
         const Text& getText(void) const;
 };

@@ -26,6 +26,8 @@ class Controller {
     public:
         Controller(void);
         ~Controller(void);
+
+        Menu    *getMainMenu(void) const;
 };
 
 #endif

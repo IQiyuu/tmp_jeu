@@ -22,8 +22,7 @@ class AWidget : public IWidget {
             int width = 100,
             int height = 100,
             bool active = true,
-            const std::string& text = "",
-            SDL_Renderer* renderer = nullptr
+            const std::string& text = ""
         );
         virtual ~AWidget(void);
 
@@ -46,7 +45,7 @@ class AWidget : public IWidget {
         void setActive(void);
         void setInactive(void);
         void toggleActive(void);
-        void setText(const std::string& content, SDL_Renderer* renderer);
+        void setText(const std::string& content);
 };
 
 #endif

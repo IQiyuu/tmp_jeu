@@ -14,8 +14,8 @@ class IWidget {
         Text _text;
 
     public:
-        IWidget()
-            : _x(0), _y(0), _height(100), _width(100), _active(true), _text(0, 0, "", nullptr) {}
+        IWidget(void)
+            : _x(0), _y(0), _height(100), _width(100), _active(true), _text(0, 0, "") {}
         virtual ~IWidget(void) = default;
 
         virtual void render(SDL_Renderer* renderer) const = 0;
