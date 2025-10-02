@@ -1,21 +1,21 @@
 NAME = game
 
 F =	main\
+	UI/AWidget\
 	UI/Button\
 	utils/Coord
 
 S = $(foreach f, $(F), srcs/$(f).cpp)
 OBJ = $(S:.cpp=.o)
 
-GFLAGS = -Wall -Werror -Wextra -Iheaders -g
-CFLAGS = `sdl2-config --libs`
+GFLAGS = -Wall -Werror -Wextra -Iheaders -g `sdl2-config --cflags --libs`
 
 all: $(NAME)
 r: re
 	./$(NAME)
 
 $(NAME): $(OBJ)
-	c++ $(OBJ) $(GFLAGS) $(CFLAGS) -o $(NAME)
+	c++ $(OBJ) $(GFLAGS) -o $(NAME)
 
 .cpp.o:
 	c++ -o $@ -c $< $(GFLAGS)

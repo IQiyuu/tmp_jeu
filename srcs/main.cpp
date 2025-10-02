@@ -44,7 +44,7 @@ int main(int ac, char* av[]) {
         SDL_SetRenderDrawColor(canvas, 0, 0, 0, 255);
         SDL_RenderClear(canvas);
         for (auto &btn : buttons) {
-            if (btn.getActive())
+            if (btn.isActive())
                 btn.render(canvas);
             SDL_RenderPresent(canvas);
         }
@@ -55,7 +55,7 @@ int main(int ac, char* av[]) {
                 int x = event.button.x;
                 int y = event.button.y;
                 for (auto &btn : buttons) {
-                    if (btn.getActive() &&
+                    if (btn.isActive() &&
                         x >= btn.getCoord().getX() &&
                         x <= btn.getCoord().getX() + btn.getWidth() &&
                         y >= btn.getCoord().getY() &&

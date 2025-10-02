@@ -1,34 +1,26 @@
 #ifndef BUTTON_HPP
 #define BUTTON_HPP
 
-#include "Coord.hpp"
+#include "AWidget.hpp"
 #include <SDL2/SDL.h>
 
-class Button {
-    private:
-        Coord   _coord;
-        void (*_action)(void);
-        int     _height;
-        int     _width;
-        bool    _active;
+class Button : public AWidget {
+private:
+    void (*_action)(void);
 
-    public:
-        Button(void);
-        Button(Coord _coord, void (*_action)(void) = nullptr, int _width = 100, int _height = 100);
-        Button(int, int, void (*_action)(void) = nullptr, int _width = 100, int _height = 100);
+public:
+    Button();
+    Button(const Coord &coord, void (*action)(void) = nullptr, int width = 100, int height = 100);
+    Button(int x, int y, void (*action)(void) = nullptr, int width = 100, int height = 100);
+    Button(const Button &);
+    ~Button();
 
-        void    setCoord(Coord);
-        void    setActive(void);
-        void    setAction(void (*a)(void));
-        void    setWidth(int);
-        void    setHeight(int);
-        Coord   getCoord(void);
-        void    (*getAction(void))(void);
-        bool    getActive(void);
-        int     getWidth(void);
-        int     getHeight(void);
+    Button& operator=(const Button &);
 
-        void    render(SDL_Renderer *); // a mettre dans une classe graphique apart
+    void setAction(void (*a)(void));
+    void (*getAction() const)(void);
+
+    void render(SDL_Renderer *canvas) const override;
 };
 
 #endif
