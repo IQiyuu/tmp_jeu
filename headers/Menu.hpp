@@ -1,28 +1,22 @@
 #ifndef MENU_HPP
 #define MENU_HPP
 
-#include "AClickableWidget.hpp"
-#include <vector>
+#include "Panel.hpp"
 
 class Menu {
     private:
-        std::vector<AClickableWidget *>   _widgets;
-        bool                    _active;
-    
+        std::vector<Panel *>   _panels;
+
     public:
         Menu(void);
-        Menu(std::vector<AClickableWidget *>);
+        Menu(std::vector<Panel *>);
         Menu(const Menu &);
         ~Menu(void);
 
         Menu &operator=(const Menu &);
 
-        std::vector<AClickableWidget *>  getWidgets(void) const;
-        std::vector<AClickableWidget *>  getActiveWidgets(void) const;
-        std::vector<AClickableWidget *>  getInactiveWidgets(void) const;
-
-        void                    addWidget(AClickableWidget *);
-
+        std::vector<Panel *> getPanels(void) const;
+        void                 addPanels(Panel *);
 };
 
 #endif

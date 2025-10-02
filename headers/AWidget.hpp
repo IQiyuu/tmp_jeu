@@ -10,10 +10,17 @@ class AWidget: public IWidget {
         int _width;
         int _height;
         bool _active;
+        std::string _text;
 
     public:
         AWidget(void);
-        AWidget(const Coord &coord, int width = 100, int height = 100, bool active = true);
+        AWidget(
+            const Coord &coord,
+            int width = 100,
+            int height = 100,
+            bool active = true,
+            std::string _text = ""
+        );
         virtual ~AWidget(void);
 
         virtual void render(SDL_Renderer* renderer) const = 0;
@@ -22,12 +29,15 @@ class AWidget: public IWidget {
         int getWidth(void) const;
         int getHeight(void) const;
         bool isActive(void) const;
-        void (*getAction() const)(void) const;
+        bool isInactive(void) const;
+        void (*getAction(void) const)(void) const;
+        std::string getText(void) const;
 
         void setCoord(const Coord &c);
         void setWidth(int w);
         void setHeight(int h);
-        void setActive(bool a);
+        void setActive();
+        void setInactive();
         void toggleActive(void);
         void setAction(void (*a)(void));
 };

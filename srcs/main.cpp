@@ -1,4 +1,4 @@
-#include "Menu.hpp"
+#include "Panel.hpp"
 #include "Button.hpp"
 
 const int WIDTH = 1024;
@@ -38,7 +38,7 @@ int main(int ac, char* av[]) {
 
     buttons.push_back(button);
 
-    Menu menu = Menu(buttons);
+    Panel menu = Panel(buttons);
 
     bool running = true;
     SDL_Event event;

@@ -1,7 +1,7 @@
 #include "Button.hpp"
 
-Button::Button(int x, int y, int width, int height, const std::function<void()>& action)
-    : AClickableWidget(Coord(x,y), width, height, true) {
+Button::Button(int x, int y, int width, int height, const std::function<void()>& action, std::string text)
+    : AClickableWidget(Coord(x,y), width, height, true, text) {
     setAction(action);
 }
 

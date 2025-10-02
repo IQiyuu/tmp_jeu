@@ -9,7 +9,13 @@ class AClickableWidget : public AWidget {
         std::function<void()> _action;
 
     public:
-        AClickableWidget(const Coord& coord = Coord(), int width = 100, int height = 100, bool active = true);
+        AClickableWidget(
+            const Coord& coord = Coord(),
+            int width = 100,
+            int height = 100,
+            bool active = true,
+            std::string text = ""
+        );
         virtual ~AClickableWidget(void);
 
         virtual bool isIn(int x, int y) const;
