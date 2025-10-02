@@ -29,6 +29,7 @@ class Panel {
         void                             setName(std::string);
 
         void                    addWidget(AClickableWidget *);
+        void                    addWidgets(std::vector<AClickableWidget *>);
         void                    enableAll(void);
         void                    disableAll(void);
 

@@ -35,6 +35,10 @@ std::string Panel::getName(void) const { return this->_name; }
 
 void        Panel::setName(std::string name) { this->_name = name; }
 
+void        Panel::addWidgets(std::vector<AClickableWidget *> ws) { 
+    for (auto &w : ws)
+        this->_widgets.push_back(w);
+}
 void        Panel::addWidget(AClickableWidget *w) { this->_widgets.push_back(w); }
 
 void        Panel::enableAll(void) {

@@ -1,17 +1,19 @@
 NAME = game
 
 F =	main\
+	Controller\
 	UI/AWidget\
 	UI/AClickableWidget\
 	UI/Panel\
 	UI/Menu\
+	UI/Text\
 	UI/Button\
 	utils/Coord
 
 S = $(foreach f, $(F), srcs/$(f).cpp)
 OBJ = $(S:.cpp=.o)
 
-GFLAGS = -Wall -Werror -Wextra -Iheaders -g `sdl2-config --cflags --libs`
+GFLAGS = -Wall -Werror -Wextra -Iheaders -g `sdl2-config --cflags --libs` -lSDL2_ttf
 
 all: $(NAME)
 r: re

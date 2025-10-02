@@ -1,6 +1,7 @@
 #ifndef AWIDGET_HPP
 #define AWIDGET_HPP
 
+#include <functional>
 #include "IWidget.hpp"
 #include <SDL2/SDL.h>
 
@@ -33,7 +34,7 @@ class AWidget: public IWidget {
         int getHeight(void) const;
         bool isActive(void) const;
         bool isInactive(void) const;
-        void (*getAction(void) const)(void) const;
+        std::function<void()> getAction() const;
         std::string getText(void) const;
 
         void setX(int);
@@ -43,7 +44,7 @@ class AWidget: public IWidget {
         void setActive();
         void setInactive();
         void toggleActive(void);
-        void setAction(void (*a)(void));
+        void setAction(const std::function<void()> &);
 };
 
 #endif
