@@ -1,8 +1,6 @@
-#ifndef ACLICKABLEWIDGET_HPP
-#define ACLICKABLEWIDGET_HPP
+#pragma once
 
 #include "AWidget.hpp"
-#include "Text.hpp"
 #include <functional>
 
 class AClickableWidget : public AWidget {
@@ -33,5 +31,3 @@ class AClickableWidget : public AWidget {
         virtual void hide(SDL_Renderer* renderer) const = 0;
         virtual void render(SDL_Renderer* renderer) const = 0;
 };
-
-#endif

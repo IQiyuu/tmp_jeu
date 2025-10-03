@@ -1,6 +1,11 @@
 #include "Controller.hpp"
 
 Controller::Controller(void) {
+    this->save.printData();
+    this->settings.setSettings(this->save.getDatas("settings"));
+    this->settings.setBindings(this->save.getDatas("bindings"));
+
+    //this->settings.printSettings();
     // init de SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
         throw std::runtime_error("SDL init failed");
@@ -70,7 +75,7 @@ Controller::Controller(void) {
 }
 
 Controller::~Controller(void) {
-    std::cout << "[Debug] Deleting Controller" << std::endl;
+    std::cout << DEBUG << " Deleting Controller" << std::endl;
     delete this->_main_menu;
 
     SDL_DestroyRenderer(this->_renderer);

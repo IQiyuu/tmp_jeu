@@ -4,7 +4,7 @@ Menu::Menu(void) {}
 Menu::Menu(std::vector<Panel *> p): _panels(p) {}
 Menu::Menu(const Menu &m): _panels(m._panels) {}
 Menu::~Menu(void) {
-    std::cout << "[Debug] Deleting Menu" << std::endl;
+    std::cout << DEBUG << " Deleting Menu" << std::endl;
     for (auto p : this->_panels)
         delete p;
 }

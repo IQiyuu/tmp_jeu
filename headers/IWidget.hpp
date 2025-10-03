@@ -1,5 +1,4 @@
-#ifndef IWIDGET_HPP
-#define IWIDGET_HPP
+#pragma once
 
 #include "Coord.hpp"
 #include "Text.hpp"
@@ -37,5 +36,3 @@ class IWidget {
         void setInactive(void) { _active = false; }
         void setText(const Text& text) { _text = text; }
 };
-
-#endif

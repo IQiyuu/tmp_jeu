@@ -1,10 +1,10 @@
-#ifndef TEXT_HPP
-#define TEXT_HPP
+#pragma once
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
-#include <string>
 #include <iostream>
+
+inline const std::string DEBUG = "\x1b[32m[DEBUG]\x1b[0m";
 
 class Text {
     private:
@@ -24,4 +24,3 @@ class Text {
         void setContent(const std::string& content);
 };
 
-#endif

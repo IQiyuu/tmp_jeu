@@ -1,5 +1,4 @@
-#ifndef Panel_HPP
-#define Panel_HPP
+#pragma once
 
 #include "AClickableWidget.hpp"
 #include <vector>
@@ -34,5 +33,3 @@ class Panel {
         void                    disableAll(SDL_Renderer *);
 
 };
-
-#endif

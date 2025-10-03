@@ -1,0 +1,22 @@
+{
+    "settings": {
+        "master_volume": 50,
+        "music_volume": 50,
+        "sfx_volume": 50,
+        "window_width": 1024,
+        "window_height": 800,
+        "fullscreen": true,
+        "fps_cap": 60,
+        "speaker": "default"
+    },
+    "bindings": {
+        "avancer": 0,
+        "reculer": 1,
+        "droite": 2,
+        "gauche": 3,
+        "spell_1": 4,
+        "spell_2": 5,
+        "spell_3": 6,
+        "spell_4": 7
+    }
+}

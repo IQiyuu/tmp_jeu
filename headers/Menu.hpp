@@ -1,5 +1,4 @@
-#ifndef MENU_HPP
-#define MENU_HPP
+#pragma once
 
 #include "Panel.hpp"
 
@@ -20,5 +19,3 @@ class Menu {
         void                 addPanel(Panel *);
         void                 createPanel(void);
 };
-
-#endif

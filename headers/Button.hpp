@@ -1,10 +1,8 @@
-#ifndef BUTTON_HPP
-#define BUTTON_HPP
+#pragma once
 
 #include "AClickableWidget.hpp"
 #include "Text.hpp"
 #include <functional>
-#include <string>
 
 class Button : public AClickableWidget {
     private:
@@ -27,5 +25,3 @@ class Button : public AClickableWidget {
         void hide(SDL_Renderer* renderer) const;
 
 };
-
-#endif

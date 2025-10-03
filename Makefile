@@ -8,7 +8,9 @@ F =	main\
 	UI/Menu\
 	UI/Text\
 	UI/Button\
-	utils/Coord
+	utils/Coord\
+	utils/Save\
+	utils/Settings
 
 S = $(foreach f, $(F), srcs/$(f).cpp)
 OBJ = $(S:.cpp=.o)

@@ -1,5 +1,4 @@
-#ifndef COORD_HPP
-#define COORD_HPP
+#pragma once
 
 #include <iostream>
 
@@ -25,5 +24,3 @@ public:
     int getX() const;
     int getY() const;
 };
-
-#endif

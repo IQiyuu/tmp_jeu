@@ -1,8 +1,9 @@
-#ifndef CONTROLLER_HPP
-#define CONTROLLER_HPP
+#pragma once
 
 #include "Menu.hpp"
 #include "Button.hpp"
+#include "Save.hpp"
+#include "Settings.hpp"
 
 enum States {
     MAIN_MENU,
@@ -21,6 +22,9 @@ class Controller {
         TTF_Font        *_font;
         SDL_Window      *_window;
         SDL_Renderer    *_renderer;
+
+        Save            save;
+        Settings        settings;
     
     public:
         Controller(void);
@@ -29,5 +33,3 @@ class Controller {
         Menu            *getMainMenu(void) const;
         SDL_Renderer    *getRenderer() const;
 };
-
-#endif

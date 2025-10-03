@@ -1,0 +1,22 @@
+{
+    "settings": {
+        "master_volume": 10,
+        "music_volume": 10,
+        "sfx_volume": 10,
+        "window_width": 2024,
+        "window_height": 1800,
+        "fullscreen": true,
+        "fps_cap": 10,
+        "speaker": "defaault"
+    },
+    "bindings": {
+        "avancer": 0,
+        "reculer": 1,
+        "droite": 2,
+        "gauche": 3,
+        "spell_1": 4,
+        "spell_2": 5,
+        "spell_3": 6,
+        "spell_4": 7
+    }
+}

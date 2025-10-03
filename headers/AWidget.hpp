@@ -1,8 +1,6 @@
-#ifndef AWIDGET_HPP
-#define AWIDGET_HPP
+#pragma once
 
 #include "IWidget.hpp"
-#include "Text.hpp"
 #include <SDL2/SDL.h>
 
 class AWidget : public IWidget {
@@ -47,5 +45,3 @@ class AWidget : public IWidget {
         void toggleActive(void);
         void setText(const std::string& content);
 };
-
-#endif
