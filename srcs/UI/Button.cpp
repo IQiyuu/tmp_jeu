@@ -9,7 +9,9 @@ Button::Button(int x, int y, int w, int h, const std::function<void()>& action, 
 Button::Button(const Button& other)
     : AClickableWidget(other), _text(other._text) {}
 
-Button::~Button() {}
+Button::~Button() {
+    std::cout << "Button load error: " << std::endl;
+}
 
 Button& Button::operator=(const Button& other) {
     if (this != &other) {

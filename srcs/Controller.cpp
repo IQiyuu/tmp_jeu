@@ -58,9 +58,11 @@ Controller::Controller(void) {
 
 Controller::~Controller(void) {
     delete this->_main_menu;
-    SDL_DestroyTexture(this->_texture);
+
     SDL_DestroyRenderer(this->_renderer);
     SDL_DestroyWindow(this->_window);
+
+    TTF_Quit();
     SDL_Quit();
 }
 

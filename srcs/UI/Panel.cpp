@@ -4,6 +4,7 @@ Panel::Panel(void) {}
 Panel::Panel(std::vector<AClickableWidget *>w): _widgets(w) {}
 Panel::Panel(const Panel &m): _widgets(m._widgets) {}
 Panel::~Panel(void) {
+    std::cout << "Panel load error: " << std::endl;
     for (auto w : this->_widgets)
         delete w;
 }

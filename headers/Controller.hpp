@@ -21,7 +21,6 @@ class Controller {
         TTF_Font        *_font;
         SDL_Window      *_window;
         SDL_Renderer    *_renderer;
-        SDL_Texture     *_texture;
     
     public:
         Controller(void);
