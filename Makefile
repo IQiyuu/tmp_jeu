@@ -8,6 +8,7 @@ F =	main\
 	UI/Menu\
 	UI/Text\
 	UI/Button\
+	UI/Slider\
 	utils/Coord\
 	utils/Save\
 	utils/Settings

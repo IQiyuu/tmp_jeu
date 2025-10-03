@@ -23,7 +23,9 @@ Button& Button::operator=(const Button& other) {
 
 void Button::render(SDL_Renderer* renderer) const {
     if (!this->_active) return;
-    std::cout << DEBUG << " Displaying Menu" << std::endl;
+
+    std::cout << DEBUG << " Displaying Button" << std::endl;
+
     SDL_Rect rect = {this->_x, this->_y, this->_width, this->_height};
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     SDL_RenderFillRect(renderer, &rect);
@@ -32,9 +34,10 @@ void Button::render(SDL_Renderer* renderer) const {
 }
 
 void Button::hide(SDL_Renderer* renderer) const {
-
     if (!this->_active) return;
+
     std::cout << DEBUG << " Hiding Button" << std::endl;
+
     SDL_Rect rect = {this->_x, this->_y, this->_width, this->_height};
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderFillRect(renderer, &rect);

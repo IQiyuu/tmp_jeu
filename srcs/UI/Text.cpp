@@ -45,3 +45,5 @@ void Text::render(SDL_Renderer *renderer) const {
 void Text::setContent(const std::string& content) {
     _content = content;
 }
+
+std::string Text::getContent(void) const { return this->_content; }

@@ -1,11 +1,11 @@
 #include "Controller.hpp"
 
 Controller::Controller(void) {
-    this->save.printData();
+    // this->save.printData();
     this->settings.setSettings(this->save.getDatas("settings"));
     this->settings.setBindings(this->save.getDatas("bindings"));
 
-    //this->settings.printSettings();
+    this->settings.printSettings();
     // init de SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
         throw std::runtime_error("SDL init failed");
@@ -42,11 +42,12 @@ Controller::Controller(void) {
 
     this->_main_menu = new Menu();
     Panel *p = new Panel(); // panel du main menu
-    Button* start_b = new Button(WIDTH/2 - 75, 50, 150, 50, [](){}, "Start");
-    Button* sett_b   = new Button(WIDTH/2 - 75, 150, 150, 50, [](){}, "Settings");
-    Button* leave_b  = new Button(WIDTH/2 - 75, 250, 150, 50, [](){}, "Leave");
+    Button  *start_b = new Button(WIDTH/2 - 75, 50, 150, 50, [](){}, "Start");
+    Button  *sett_b   = new Button(WIDTH/2 - 75, 150, 150, 50, [](){}, "Settings");
+    Button  *leave_b  = new Button(WIDTH/2 - 75, 250, 150, 50, [](){}, "Leave");
+    Slider  *slider  = new Slider(WIDTH/2 - 75, 350, 150, 25, [](){}, "Volume");
 
-    std::vector<AClickableWidget *> btns = {start_b,sett_b,leave_b};
+    std::vector<AClickableWidget *> btns = {start_b,sett_b,leave_b,slider};
     p->addWidgets(btns);
     this->_main_menu->addPanel(p);
     start_b->setAction([p, this](){
@@ -71,6 +72,7 @@ Controller::Controller(void) {
     start_b->render(this->_renderer);
     sett_b->render(this->_renderer);
     leave_b->render(this->_renderer);
+    slider->render(this->_renderer);
     SDL_RenderPresent(this->_renderer);
 }
 
