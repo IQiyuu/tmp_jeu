@@ -16,9 +16,10 @@ OBJ = $(S:.cpp=.o)
 GFLAGS = -Wall -Werror -Wextra -Iheaders -g `sdl2-config --cflags --libs` -lSDL2_ttf -g
 
 all: $(NAME)
-r: re
+r: all
 	./$(NAME)
-
+rr: re
+	./$(NAME)
 leaks: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=definite --track-origins=yes ./$(NAME)
 

@@ -24,14 +24,14 @@ class Panel {
         std::vector<AClickableWidget *>  getInactiveWidgets(void) const;
         bool                             isActive(void) const;
 
-        void                             disable(void);
-        void                             enable(void);
+        void                             disable(SDL_Renderer *);
+        void                             enable(SDL_Renderer *);
         void                             setName(std::string);
 
         void                    addWidget(AClickableWidget *);
         void                    addWidgets(std::vector<AClickableWidget *>);
-        void                    enableAll(void);
-        void                    disableAll(void);
+        void                    enableAll(SDL_Renderer *);
+        void                    disableAll(SDL_Renderer *);
 
 };
 

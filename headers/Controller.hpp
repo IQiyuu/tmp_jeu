@@ -26,7 +26,8 @@ class Controller {
         Controller(void);
         ~Controller(void);
 
-        Menu    *getMainMenu(void) const;
+        Menu            *getMainMenu(void) const;
+        SDL_Renderer    *getRenderer() const;
 };
 
 #endif

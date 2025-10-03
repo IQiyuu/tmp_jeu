@@ -36,20 +36,33 @@ Controller::Controller(void) {
     SDL_RenderClear(this->_renderer);
 
     this->_main_menu = new Menu();
-    Panel *p = new Panel();
-    Button* start_b = new Button(WIDTH/2 - 75, 50, 150, 50, [](){
-        std::cout << "starting the game" << std::endl;
-    }, "Start");
-    Button* sett_b   = new Button(WIDTH/2 - 75, 150, 150, 50, [](){
-        std::cout << "settings the game" << std::endl;
-    }, "Settings");
-    Button* leave_b  = new Button(WIDTH/2 - 75, 250, 150, 50, [](){
-        std::cout << "leave the game" << std::endl;
-    }, "Leave");
+    Panel *p = new Panel(); // panel du main menu
+    Button* start_b = new Button(WIDTH/2 - 75, 50, 150, 50, [](){}, "Start");
+    Button* sett_b   = new Button(WIDTH/2 - 75, 150, 150, 50, [](){}, "Settings");
+    Button* leave_b  = new Button(WIDTH/2 - 75, 250, 150, 50, [](){}, "Leave");
 
     std::vector<AClickableWidget *> btns = {start_b,sett_b,leave_b};
     p->addWidgets(btns);
     this->_main_menu->addPanel(p);
+    start_b->setAction([p, this](){
+        std::cout << "starting the game" << std::endl;
+        p->disable(this->_renderer);
+    });
+    sett_b->setAction([p, this](){
+        std::cout << "settings the game" << std::endl;
+        p->disable(this->_renderer);
+    });
+    leave_b->setAction([this](){
+        std::cout << "leave the game" << std::endl;
+            delete this->_main_menu;
+
+            SDL_DestroyRenderer(this->_renderer);
+            SDL_DestroyWindow(this->_window);
+
+            TTF_Quit();
+            SDL_Quit();
+        exit(0);
+    });
     start_b->render(this->_renderer);
     sett_b->render(this->_renderer);
     leave_b->render(this->_renderer);
@@ -57,6 +70,7 @@ Controller::Controller(void) {
 }
 
 Controller::~Controller(void) {
+    std::cout << "[Debug] Deleting Controller" << std::endl;
     delete this->_main_menu;
 
     SDL_DestroyRenderer(this->_renderer);
@@ -66,4 +80,5 @@ Controller::~Controller(void) {
     SDL_Quit();
 }
 
-Menu    *Controller::getMainMenu() const { return this->_main_menu; }
+Menu            *Controller::getMainMenu() const { return this->_main_menu; }
+SDL_Renderer    *Controller::getRenderer() const { return this->_renderer; }

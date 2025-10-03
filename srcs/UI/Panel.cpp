@@ -1,5 +1,5 @@
 #include "Panel.hpp"
-
+ // ><
 Panel::Panel(void) {}
 Panel::Panel(std::vector<AClickableWidget *>w): _widgets(w) {}
 Panel::Panel(const Panel &m): _widgets(m._widgets) {}
@@ -42,17 +42,29 @@ void        Panel::addWidgets(std::vector<AClickableWidget *> ws) {
 }
 void        Panel::addWidget(AClickableWidget *w) { this->_widgets.push_back(w); }
 
-void        Panel::enableAll(void) {
-    for (auto &p : this->_widgets)
-        p->setActive();
+void        Panel::enableAll(SDL_Renderer *r) {
+    for (auto &w : this->_widgets) {
+        w->setActive();
+        w->render(r);
+    }
 }
 
-void        Panel::disableAll(void) {
-    for (auto &p : this->_widgets)
-        p->setInactive();
+void        Panel::disableAll(SDL_Renderer *r) {
+    for (auto &w : this->_widgets) {
+        w->hide(r);
+        w->setInactive();
+    }
 }
 
 bool    Panel::isActive(void) const { return this->_active; }
 
-void    Panel::disable(void) { this->_active = false; }
-void    Panel::enable(void) { this->_active = true; }
+void    Panel::disable(SDL_Renderer *r) {
+    std::cout << "[Debug] Enabling Panel" << std::endl;
+    this->_active = false;
+    this->disableAll(r);
+}
+void    Panel::enable(SDL_Renderer *r) {
+    std::cout << "[Debug] Enabling Panel" << std::endl;
+    this->_active = true;
+    this->enableAll(r);
+}

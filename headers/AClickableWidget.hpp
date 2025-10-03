@@ -28,6 +28,10 @@ class AClickableWidget : public AWidget {
         void setText(const std::string& content);
         Text& getText(void);
         const Text& getText(void) const;
+
+
+        virtual void hide(SDL_Renderer* renderer) const = 0;
+        virtual void render(SDL_Renderer* renderer) const = 0;
 };
 
 #endif

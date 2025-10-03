@@ -24,6 +24,8 @@ class Button : public AClickableWidget {
         Button& operator=(const Button& other);
 
         void render(SDL_Renderer* renderer) const;
+        void hide(SDL_Renderer* renderer) const;
+
 };
 
 #endif

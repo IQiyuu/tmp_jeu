@@ -10,7 +10,7 @@ Button::Button(const Button& other)
     : AClickableWidget(other), _text(other._text) {}
 
 Button::~Button() {
-    std::cout << "Button load error: " << std::endl;
+    std::cout << "[Debug] Deleting Button" << std::endl;
 }
 
 Button& Button::operator=(const Button& other) {
@@ -23,10 +23,19 @@ Button& Button::operator=(const Button& other) {
 
 void Button::render(SDL_Renderer* renderer) const {
     if (!this->_active) return;
-
+    std::cout << "[Debug] Displaying Menu" << std::endl;
     SDL_Rect rect = {this->_x, this->_y, this->_width, this->_height};
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     SDL_RenderFillRect(renderer, &rect);
 
     this->_text.render(renderer);
+}
+
+void Button::hide(SDL_Renderer* renderer) const {
+
+    if (!this->_active) return;
+    std::cout << "[Debug] Hiding Button" << std::endl;
+    SDL_Rect rect = {this->_x, this->_y, this->_width, this->_height};
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderFillRect(renderer, &rect);
 }

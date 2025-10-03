@@ -12,7 +12,7 @@ Text::Text(const Text& other)
     : _x(other._x), _y(other._y), _content(other._content), _font(other._font) {}
 
 Text::~Text() {
-    std::cout << "Font load error: " << std::endl;
+    std::cout << "[Debug] Deleting Text" << std::endl;
     if (this->_font) TTF_CloseFont(this->_font);
 }
 
