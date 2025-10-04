@@ -6,23 +6,27 @@ int main(int ac, char* av[]) {
 
     Controller controller;
 
-    bool running = true;
-    SDL_Event event;
-    while (running) {
+    SDL_Event event = controller.getEvent(); // référence, pas pointeur
+
+    while (controller.getRunning()) {
         Panel *panel = controller.getMainMenu()->getActivePanel();
 
         while (SDL_PollEvent(&event)) {
+            controller.setEvent(event);
             if (event.type == SDL_QUIT)
-                running = false;
+                controller.stopRunning();
 
-            if (event.type == SDL_MOUSEBUTTONDOWN) {
-                int x = event.button.x;
-                int y = event.button.y;
-                if (panel) {
-                    std::vector<AClickableWidget*> btns = panel->getActiveWidgets();
-                    for (auto &btn : btns) {
-                        if (btn->isIn(x, y)) {
-                            std::cout << "btn clicked" << std::endl;
+            int x = event.button.x;
+            int y = event.button.y;
+
+            if (panel) {
+                std::vector<AClickableWidget*> btns = panel->getActiveWidgets();
+                for (auto &btn : btns) {
+                    if (btn->isIn(x, y)) {
+                        if (event.type == SDL_MOUSEBUTTONDOWN) {
+                            btn->execute();
+                        }
+                        else if (event.type == SDL_MOUSEMOTION && (event.motion.state & SDL_BUTTON_LMASK)) {
                             btn->execute();
                         }
                     }
@@ -32,9 +36,6 @@ int main(int ac, char* av[]) {
         SDL_RenderPresent(controller.getRenderer());
     }
 
-    // SDL_FreeSurface(surface);
-    // SDL_DestroyTexture(texture); // libérer la texture après rendu
-    // TTF_CloseFont(font);
-    // TTF_Quit();
+
     return 0;
 }

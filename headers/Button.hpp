@@ -13,7 +13,7 @@ class Button : public AClickableWidget {
             int y = 0,
             int width = 100,
             int height = 100,
-            const std::function<void()>& action = {},
+            const std::function<void(void)>& action = {},
             const std::string& text = ""
         );
         Button(const Button& other);

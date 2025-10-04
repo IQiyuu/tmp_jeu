@@ -13,7 +13,7 @@ class Slider: public AClickableWidget {
             int y = 0,
             int width = 100,
             int height = 100,
-            const std::function<void()>& action = {},
+            const std::function<void(void)>& action = {},
             const std::string& text = "",
             const std::string& text2 = "50"
         );
@@ -24,4 +24,6 @@ class Slider: public AClickableWidget {
 
         void render(SDL_Renderer* renderer) const;
         void hide(SDL_Renderer* renderer) const;
+
+        void    setValue(const std::string &);
 };

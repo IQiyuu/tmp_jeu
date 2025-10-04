@@ -5,7 +5,7 @@
 
 class AClickableWidget : public AWidget {
     protected:
-        std::function<void()> _action;
+        std::function<void(void)> _action;
         Text _text;
 
     public:
@@ -22,7 +22,7 @@ class AClickableWidget : public AWidget {
         virtual bool isIn(int x, int y) const;
         virtual void execute(void);
 
-        void setAction(const std::function<void()>& action);
+        void setAction(const std::function<void(void)>& action);
         void setText(const std::string& content);
         Text& getText(void);
         const Text& getText(void) const;

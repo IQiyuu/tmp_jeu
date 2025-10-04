@@ -14,7 +14,7 @@ void AClickableWidget::execute(void) {
     if (this->_action) this->_action();
 }
 
-void AClickableWidget::setAction(const std::function<void()>& action) {
+void AClickableWidget::setAction(const std::function<void(void)>& action) {
     this->_action = action;
 }
 

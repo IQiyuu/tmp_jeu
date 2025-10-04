@@ -1,7 +1,7 @@
 #include "Slider.hpp"
 #include <SDL2/SDL.h>
 
-Slider::Slider(int x, int y, int w, int h, const std::function<void()>& action, const std::string& text, const std::string& text2)
+Slider::Slider(int x, int y, int w, int h, const std::function<void(void)>& action, const std::string& text, const std::string& text2)
     : AClickableWidget(x, y, w, h), _text(x-100, y, text), _value(x, y, text2) {
     this->_action = action;
 }
@@ -23,10 +23,13 @@ Slider& Slider::operator=(const Slider& other) {
 
 void Slider::render(SDL_Renderer* renderer) const {
     if (!this->_active) return;
-
     std::cout << DEBUG << " Displaying Slider" << std::endl;
 
     int v = std::stoi(this->_value.getContent());
+
+    SDL_Rect rect = {this->_x, this->_y, this->_width, this->_height};
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderFillRect(renderer, &rect);
 
     SDL_Rect filled = {this->_x, this->_y, this->_width * v / 100, this->_height};
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -50,3 +53,5 @@ void Slider::hide(SDL_Renderer* renderer) const {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderFillRect(renderer, &rect);
 }
+
+void    Slider::setValue(const std::string &v) { this->_value.setContent(v); }

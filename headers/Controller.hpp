@@ -23,14 +23,22 @@ class Controller {
         TTF_Font        *_font;
         SDL_Window      *_window;
         SDL_Renderer    *_renderer;
+        SDL_Event       _event;
 
         Save            save;
         Settings        settings;
+
+        bool            _running;
     
     public:
         Controller(void);
         ~Controller(void);
 
         Menu            *getMainMenu(void) const;
-        SDL_Renderer    *getRenderer() const;
+        SDL_Renderer    *getRenderer(void) const;
+        SDL_Event       &getEvent(void);
+        bool            getRunning(void) const;
+
+        void            setEvent(SDL_Event &);
+        void            stopRunning(void);
 };

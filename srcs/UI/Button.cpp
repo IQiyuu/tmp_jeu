@@ -1,7 +1,7 @@
 #include "Button.hpp"
 #include <SDL2/SDL.h>
 
-Button::Button(int x, int y, int w, int h, const std::function<void()>& action, const std::string& text)
+Button::Button(int x, int y, int w, int h, const std::function<void(void)>& action, const std::string& text)
     : AClickableWidget(x, y, w, h), _text(x, y, text) {
     this->_action = action;
 }
