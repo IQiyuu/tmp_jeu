@@ -34,6 +34,7 @@ int main(int ac, char* av[]) {
             }
         }
         SDL_RenderPresent(controller.getRenderer());
+        SDL_Delay(16); // a changer par le fps cap des settings
     }
 
 

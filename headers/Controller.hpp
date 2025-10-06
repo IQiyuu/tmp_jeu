@@ -5,6 +5,7 @@
 #include "Save.hpp"
 #include "Settings.hpp"
 #include "Slider.hpp"
+#include "Box.hpp"
 
 enum States {
     MAIN_MENU,

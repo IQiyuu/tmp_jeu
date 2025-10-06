@@ -9,6 +9,7 @@ F =	main\
 	UI/Text\
 	UI/Button\
 	UI/Slider\
+	UI/Box\
 	utils/Coord\
 	utils/Save\
 	utils/Settings

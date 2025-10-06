@@ -46,8 +46,9 @@ Controller::Controller(void) {
     Button *sett_b  = new Button(WIDTH/2 - 75, 150, 150, 50, [](){}, "Settings");
     Button *leave_b = new Button(WIDTH/2 - 75, 250, 150, 50, [](){}, "Leave");
     Slider *slider  = new Slider(WIDTH/2 - 75, 350, 150, 25, [](){}, "Volume");
+    Box     *box = new Box(WIDTH/2, 450, 25, 25, [](){}, "Fullscreen");
 
-    std::vector<AClickableWidget *> btns = {start_b, sett_b, leave_b, slider};
+    std::vector<AClickableWidget *> btns = {start_b, sett_b, leave_b, slider, box};
     p->addWidgets(btns);
     this->_main_menu->addPanel(p);
 
@@ -90,6 +91,13 @@ Controller::Controller(void) {
             }
         }
     });
+    box->setAction([this, box](){
+        std::cout << "checking box" << std::endl;
+        box->setChecked(!box->getCheck());
+        std::cout << box->getCheck() << std::endl;
+        box->render(this->_renderer);
+    });
+
     SDL_SetRenderDrawColor(this->_renderer, 0, 0, 0, 255);
     SDL_RenderClear(this->_renderer);
 
