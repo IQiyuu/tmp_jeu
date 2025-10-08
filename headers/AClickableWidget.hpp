@@ -20,7 +20,7 @@ class AClickableWidget : public AWidget {
         virtual ~AClickableWidget(void);
 
         virtual bool isIn(int x, int y) const;
-        virtual void execute(void);
+        virtual bool execute(void);
 
         void setAction(const std::function<void(void)>& action);
         void setText(const std::string& content);

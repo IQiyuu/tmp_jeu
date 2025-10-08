@@ -10,8 +10,9 @@ bool AClickableWidget::isIn(int x, int y) const {
            y >= this->_y && y <= this->_y + this->_height;
 }
 
-void AClickableWidget::execute(void) {
+bool AClickableWidget::execute(void) {
     if (this->_action) this->_action();
+    return false;
 }
 
 void AClickableWidget::setAction(const std::function<void(void)>& action) {

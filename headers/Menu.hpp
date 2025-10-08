@@ -2,9 +2,12 @@
 
 #include "Panel.hpp"
 
+class SDL_Renderer;
+
 class Menu {
     private:
         std::vector<Panel *>   _panels;
+        bool                   _active;
 
     public:
         Menu(void);
@@ -18,4 +21,9 @@ class Menu {
         Panel               *getActivePanel(void) const;
         void                 addPanel(Panel *);
         void                 createPanel(void);
+
+        bool                isActive(void) const;
+        void                setActive(bool);
+        void                enable(SDL_Renderer *);
+        void                disable(SDL_Renderer *);
 };

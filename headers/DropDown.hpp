@@ -5,12 +5,14 @@
 #include <functional>
 #include <vector>
 
-class List : public AClickableWidget {
+class DropDown : public AClickableWidget {
     private:
         Text _text;
-        std::vector<Text> _list;
+        std::vector<Text *> _list;
+        bool              _isDropDown;
+
     public:
-        List(
+        DropDown(
             int x = 0,
             int y = 0,
             int width = 100,
@@ -18,10 +20,15 @@ class List : public AClickableWidget {
             const std::function<void(void)>& action = {},
             const std::string& text = ""
         );
-        List(const List& other);
-        ~List();
+        DropDown(const DropDown& other);
+        ~DropDown();
 
-        List& operator=(const List& other);
+        DropDown& operator=(const DropDown& other);
+
+        bool    execute(void);
+
+        void    setDropDown(bool);
+        bool    getDropDown(void) const;
 
         void render(SDL_Renderer* renderer) const;
         void hide(SDL_Renderer* renderer) const;

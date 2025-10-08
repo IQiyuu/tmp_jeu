@@ -23,6 +23,9 @@ class Text {
         void render(SDL_Renderer* renderer) const;
         void setContent(const std::string& content);
 
+        int getX(void) const;
+        int getY(void) const;
+
         std::string getContent(void) const;
 };
 

@@ -1,1 +1,0 @@
-c++ -o srcs/UI/Text.o -c srcs/UI/Text.cpp -Wall -Werror -Wextra -Iheaders -g `sdl2-config --cflags --libs` -lSDL2_ttf

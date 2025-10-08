@@ -27,3 +27,16 @@ void                 Menu::createPanel(void) {
     Panel *p = new Panel();
     this->_panels.push_back(p);
 }
+
+void                Menu::setActive(bool a) { this->_active = a; }
+bool                Menu::isActive(void) const { return this->_active; }
+
+void                Menu::enable(SDL_Renderer *r) {
+    this->_active = true;
+    this->getActivePanel()->enableAll(r);
+}
+
+void                Menu::disable(SDL_Renderer *r) {
+    this->_active = false;
+    this->getActivePanel()->disableAll(r);
+}

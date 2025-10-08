@@ -7,9 +7,10 @@ int main(int ac, char* av[]) {
     Controller controller;
 
     SDL_Event event = controller.getEvent(); // référence, pas pointeur
+ // ><
 
     while (controller.getRunning()) {
-        Panel *panel = controller.getMainMenu()->getActivePanel();
+        Panel *panel = controller.getActivePanel();
 
         while (SDL_PollEvent(&event)) {
             controller.setEvent(event);
@@ -24,10 +25,12 @@ int main(int ac, char* av[]) {
                 for (auto &btn : btns) {
                     if (btn->isIn(x, y)) {
                         if (event.type == SDL_MOUSEBUTTONDOWN) {
-                            btn->execute();
+                            if (btn->execute())
+                                break ;
                         }
                         else if (event.type == SDL_MOUSEMOTION && (event.motion.state & SDL_BUTTON_LMASK)) {
-                            btn->execute();
+                            if (btn->execute())
+                                break ;
                         }
                     }
                 }

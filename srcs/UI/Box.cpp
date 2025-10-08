@@ -2,7 +2,7 @@
 #include <SDL2/SDL.h>
 
 Box::Box(int x, int y, int w, int h, const std::function<void(void)>& action, const std::string& text)
-    : AClickableWidget(x, y, w, h), _text(x, y, text), _check(false) {
+    : AClickableWidget(x, y, w, h), _text(x-50, y-25, text), _check(false) {
     this->_action = action;
 }
 

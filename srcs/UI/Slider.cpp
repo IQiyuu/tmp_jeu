@@ -2,7 +2,7 @@
 #include <SDL2/SDL.h>
 
 Slider::Slider(int x, int y, int w, int h, const std::function<void(void)>& action, const std::string& text, const std::string& text2)
-    : AClickableWidget(x, y, w, h), _text(x-100, y, text), _value(x, y, text2) {
+    : AClickableWidget(x, y, w, h), _text(x-50, y-25, text), _value(x, y, text2) {
     this->_action = action;
 }
 

@@ -10,6 +10,7 @@ F =	main\
 	UI/Button\
 	UI/Slider\
 	UI/Box\
+	UI/DropDown\
 	utils/Coord\
 	utils/Save\
 	utils/Settings

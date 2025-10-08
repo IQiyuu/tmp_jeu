@@ -47,3 +47,5 @@ void Text::setContent(const std::string& content) {
 }
 
 std::string Text::getContent(void) const { return this->_content; }
+int         Text::getX(void) const { return this->_x; }
+int         Text::getY(void) const { return this->_y; }

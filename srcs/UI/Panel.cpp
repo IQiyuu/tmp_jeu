@@ -1,6 +1,6 @@
 #include "Panel.hpp"
  // ><
-Panel::Panel(void) {}
+Panel::Panel(int x, int y, int w, int h): _x(x), _y(y), _w(w), _h(h) {}
 Panel::Panel(std::vector<AClickableWidget *>w): _widgets(w) {}
 Panel::Panel(const Panel &m): _widgets(m._widgets) {}
 Panel::~Panel(void) {
@@ -43,28 +43,43 @@ void        Panel::addWidgets(std::vector<AClickableWidget *> ws) {
 void        Panel::addWidget(AClickableWidget *w) { this->_widgets.push_back(w); }
 
 void        Panel::enableAll(SDL_Renderer *r) {
-    for (auto &w : this->_widgets) {
+    for (auto &w : this->_widgets)
         w->setActive();
-        w->render(r);
-    }
+    this->display(r);
 }
 
 void        Panel::disableAll(SDL_Renderer *r) {
-    for (auto &w : this->_widgets) {
-        w->hide(r);
+    for (auto &w : this->_widgets)
         w->setInactive();
-    }
+    this->hide(r);
 }
 
 bool    Panel::isActive(void) const { return this->_active; }
 
-void    Panel::disable(SDL_Renderer *r) {
+void    Panel::disable() {
     std::cout << DEBUG << " Enabling Panel" << std::endl;
     this->_active = false;
-    this->disableAll(r);
 }
-void    Panel::enable(SDL_Renderer *r) {
+void    Panel::enable() {
     std::cout << DEBUG << " Enabling Panel" << std::endl;
     this->_active = true;
-    this->enableAll(r);
 }
+
+void    Panel::display(SDL_Renderer *r) {
+    this->hide(r);
+    for (auto &w : this->_widgets) {
+        if (w->isActive())
+            w->render(r);
+    }
+}
+
+void    Panel::hide(SDL_Renderer *r) {
+    SDL_Rect rect = {this->_x, this->_y, this->_w, this->_h};
+    SDL_SetRenderDrawColor(r, 0, 0, 0, 255);
+    SDL_RenderFillRect(r, &rect);
+}
+
+int    Panel::getX(void) const { return this->_x; }
+int    Panel::getY(void) const { return this->_y; }
+int    Panel::getWidth(void) const { return this->_w; }
+int    Panel::getHeight(void) const { return this->_h; }

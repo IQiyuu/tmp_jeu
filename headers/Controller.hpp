@@ -6,6 +6,7 @@
 #include "Settings.hpp"
 #include "Slider.hpp"
 #include "Box.hpp"
+#include "DropDown.hpp"
 
 enum States {
     MAIN_MENU,
@@ -20,6 +21,7 @@ class Controller {
     private:
         Menu            *_main_menu;
         Menu            *_game_menu;
+        Menu            *_settings_menu;
         int             _state;
         TTF_Font        *_font;
         SDL_Window      *_window;
@@ -39,7 +41,11 @@ class Controller {
         SDL_Renderer    *getRenderer(void) const;
         SDL_Event       &getEvent(void);
         bool            getRunning(void) const;
+        Panel           *getActivePanel(void) const;
 
         void            setEvent(SDL_Event &);
         void            stopRunning(void);
+
+        void            createSettingsMenu(void);
+        void            createMainMenu(void);
 };
